@@ -3,6 +3,7 @@ package nl.ap.mst;
 import nl.ap.mst.Graph.Graph;
 import nl.ap.mst.Graph.Node;
 
+import java.util.List;
 import java.util.Random;
 
 public class App {
@@ -34,5 +35,10 @@ public class App {
             }
         }
         connected_graph.Print();
+
+        List<Node> tree = min_spanning_tree.Get(connected_graph);
+
+        System.out.println("Tree length: " + tree.size());
+
     }
 }

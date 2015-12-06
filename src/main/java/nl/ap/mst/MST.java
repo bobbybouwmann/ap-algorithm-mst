@@ -18,6 +18,7 @@ public class MST {
         Node aNode = FindNodeWithClosestConnection(graph);
 
         while (aNode != null) {
+            walkedPath.add(aNode);
             Node closestToUs = GetClosestAvailableNode(aNode); // everything should have at least one connection that is closest to us
             ourTree.add(aNode.CopyForTree(closestToUs.CopyForTree()));
 
