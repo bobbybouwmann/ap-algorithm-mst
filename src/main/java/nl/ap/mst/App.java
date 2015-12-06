@@ -28,7 +28,7 @@ public class App {
             if (minConnectedTo < max_nodes-1) {
                 aNode.connect(connected_graph.Nodes.get(minConnectedTo + 1));
             }
-            int nodeI = rn.nextInt(max_nodes + 1);
+            int nodeI = rn.nextInt(max_nodes);
             for (int i = 0; i < 1; i++) {
                 aNode.connect(connected_graph.Nodes.get(nodeI));
             }

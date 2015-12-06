@@ -56,6 +56,9 @@ public class Node {
         return newNode;
     }
     public void connect(Node aNode) {
+        if (this == aNode)
+            return;
+
         if (this.connectedTo == null)
             this.connectedTo = new ArrayList<>();
         if (!this.connectedTo.contains(aNode))
