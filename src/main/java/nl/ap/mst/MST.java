@@ -20,6 +20,8 @@ public class MST {
         while (aNode != null) {
             walkedPath.add(aNode);
             Node closestToUs = GetClosestAvailableNode(aNode); // everything should have at least one connection that is closest to us
+            if (closestToUs == null)
+                break;
             ourTree.add(aNode.CopyForTree(closestToUs.CopyForTree()));
 
             aNode = FindNodeWithClosestConnection(graph); // find the next item
@@ -35,12 +37,14 @@ public class MST {
         List<Node> evaluatedNodes = new ArrayList<>();
 
         for(Node aNode : aGraph.Nodes) {
-            if (AlreadyUsed(aNode) || evaluatedNodes.contains((aNode))) // only walk our non used nodes
+            if (AlreadyUsed(aNode) || evaluatedNodes.contains(aNode)) // only walk our non used nodes
                 continue;
 
             if (startingNode == null) {
                 startingNode = aNode;
                 Node closestToUs = GetClosestAvailableNode(aNode);
+                if (closestToUs == null)
+                    continue;
                 closestDistance = closestToUs.DistanceTo(aNode);
             } else { // We are assuming all nodes have at least one connection -> connected graph
                 Node closestToUs = GetClosestAvailableNode(aNode);
