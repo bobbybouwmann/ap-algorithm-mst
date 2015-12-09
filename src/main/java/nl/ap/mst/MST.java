@@ -36,18 +36,18 @@ public class MST {
 
         for(Node aNode : nodes) {
             if (startingNode == null) {
-                startingNode = aNode;
                 Node closestToUs = GetClosestAvailableNode(aNode);
                 if (closestToUs == null)
                     continue;
                 closestDistance = closestToUs.DistanceTo(aNode);
                 closestNode = closestToUs;
+                startingNode = aNode;
             } else { // We are assuming all nodes have at least one connection -> connected graph
                 Node closestToUs = GetClosestAvailableNode(aNode);
                 if (closestToUs == null)
                     continue;
                 double distanceToNeighbour = closestToUs.DistanceTo(aNode);
-                if (distanceToNeighbour < closestDistance || closestDistance == -1) {
+                if (distanceToNeighbour < closestDistance) {
                     closestDistance = distanceToNeighbour;
                     startingNode = aNode;
                     closestNode = closestToUs;
@@ -98,7 +98,7 @@ public class MST {
                 closestDistance = aNode.DistanceTo(aNode); // store the distance to our first encountered node for comparing later
             } else { // TODO we are assuming all nodes have atleast one connection
                 double distanceToNeighbour = aNode.DistanceTo(aNode);
-                if (distanceToNeighbour < closestDistance || closestDistance == -1) { // Check if this neighbour node is closer as our already found node
+                if (distanceToNeighbour < closestDistance) { // Check if this neighbour node is closer as our already found node
                     closestDistance = distanceToNeighbour;
                     nearest = aNode;
                 }

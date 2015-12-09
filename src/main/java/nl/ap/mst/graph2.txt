@@ -1,0 +1,44 @@
+Node n = new Node();
+n.value = 0;
+n.x = 1;
+n.y = 2;
+connected_graph.Nodes.add(n);
+
+n = new Node();
+n.value = 1;
+n.x = 4;
+n.y = 5;
+connected_graph.Nodes.add(n);
+
+n = new Node();
+n.value = 2;
+n.x = 1;
+n.y = 6;
+connected_graph.Nodes.add(n);
+
+n = new Node();
+n.value = 3;
+n.x = 4;
+n.y = 8;
+connected_graph.Nodes.add(n);
+
+n = new Node();
+n.value = 4;
+n.x = 6;
+n.y = 9;
+connected_graph.Nodes.add(n);
+
+
+n = new Node();
+n.value = 5;
+n.x = 0;
+n.y = 1;
+connected_graph.Nodes.add(n);
+
+connected_graph.Nodes.get(0).connect(connected_graph.Nodes.get(1));
+connected_graph.Nodes.get(0).connect(connected_graph.Nodes.get(2));
+connected_graph.Nodes.get(2).connect(connected_graph.Nodes.get(3));
+connected_graph.Nodes.get(1).connect(connected_graph.Nodes.get(2));
+connected_graph.Nodes.get(4).connect(connected_graph.Nodes.get(5));
+connected_graph.Nodes.get(4).connect(connected_graph.Nodes.get(2));
+connected_graph.Nodes.get(5).connect(connected_graph.Nodes.get(1));

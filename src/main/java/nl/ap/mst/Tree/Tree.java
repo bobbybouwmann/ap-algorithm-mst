@@ -62,6 +62,7 @@ public class Tree {
                         for (TreeNode anotherNode : tree.nodes) {
                             if (anotherNode.x == aNode.x && anotherNode.y == aNode.y) {
                                 connectedNodeText+= "," + anotherNode.value;
+                                connectedNodeText+= "{" + (int)foundNode.DistanceTo(anotherNode) + "}";
                                 break;
                             }
                         }
@@ -100,6 +101,7 @@ public class Tree {
                         for (Node anotherNode : nodes) {
                             if (anotherNode.x == aNode.x && anotherNode.y == aNode.y) {
                                 connectedNodeText+= "," + anotherNode.value;
+                                connectedNodeText+= "{" + (int)foundNode.DistanceTo(anotherNode) + "}";
                                 break;
                             }
                         }

@@ -24,4 +24,14 @@ public class TreeNode {
 
         return node;
     }
+
+    public double DistanceTo(TreeNode aNode) {
+        //if (!connectedTo.contains(aNode) && !aNode.connectedTo.contains(this))
+        //    return 999999999;
+
+        int diffX = Math.abs(aNode.x - this.x);
+        int diffY = Math.abs(aNode.y - this.y);
+
+        return Math.abs(Math.sqrt(diffX * diffX + diffY * diffY));
+    }
 }
