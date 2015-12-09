@@ -8,7 +8,13 @@ public class Node {
     public int y;
     public int value;
 
-    public List<Node> connectedTo;
+    public List<Node> connectedTo; // our edges
+    public List<Node> lowestConn; // what edges this node is connected to in our minimum
+
+    public Node() {
+        connectedTo = new ArrayList<>();
+        lowestConn = new ArrayList<>();
+    }
 
     public Node GetClosestNeighbour() {
         Node closest = null;
@@ -26,35 +32,15 @@ public class Node {
     }
 
     public double DistanceTo(Node aNode) {
+        if (!connectedTo.contains(aNode))
+            return 999999999;
+
         int diffX = Math.abs(aNode.x - this.x);
         int diffY = Math.abs(aNode.y - this.y);
 
         return Math.abs(Math.sqrt(diffX * diffX + diffY * diffY));
     }
 
-
-    public Node CopyForTree() {
-        Node newNode = new Node();
-        newNode.x = this.x;
-        newNode.y = this.y;
-        newNode.value = this.value;
-        return newNode;
-    }
-
-    public Node CopyForTree(Node connection) {
-        Node newNode = new Node();
-        newNode.x = this.x;
-        newNode.y = this.y;
-        newNode.value = this.value;
-        newNode.connectedTo = new ArrayList<>();
-        newNode.connectedTo.add(connection);
-
-        if (connection.connectedTo == null)
-            connection.connectedTo = new ArrayList<>();
-        connection.connectedTo.add(newNode);
-
-        return newNode;
-    }
     public void connect(Node aNode) {
         if (this == aNode)
             return;

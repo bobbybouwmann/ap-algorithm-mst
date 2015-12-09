@@ -85,7 +85,7 @@ public class App {
         }*/
         Tree.Print(connected_graph.Nodes, max_nodes, max_nodes);
 
-        List<Node> tree = min_spanning_tree.Get(connected_graph);
+        Tree tree = min_spanning_tree.Get(connected_graph);
 
         System.out.println("Tree length: " + tree.size());
         System.out.println("--------------------------");
