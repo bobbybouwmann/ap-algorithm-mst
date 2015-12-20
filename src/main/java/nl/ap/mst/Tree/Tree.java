@@ -62,7 +62,10 @@ public class Tree {
                         for (TreeNode anotherNode : tree.nodes) {
                             if (anotherNode.x == aNode.x && anotherNode.y == aNode.y) {
                                 connectedNodeText+= "," + anotherNode.value;
-                                connectedNodeText+= "{" + (int)foundNode.DistanceTo(anotherNode) + "}";
+                                float val = 0.0f;
+                                int temp = (int)(foundNode.DistanceTo(anotherNode)*100);
+                                val = (float)temp/100;
+                                // connectedNodeText+= "{" + val + "}";
                                 break;
                             }
                         }
@@ -101,7 +104,10 @@ public class Tree {
                         for (Node anotherNode : nodes) {
                             if (anotherNode.x == aNode.x && anotherNode.y == aNode.y) {
                                 connectedNodeText+= "," + anotherNode.value;
-                                connectedNodeText+= "{" + (int)foundNode.DistanceTo(anotherNode) + "}";
+                                float val = 0.0f;
+                                int temp = (int)(foundNode.DistanceTo(anotherNode)*100);
+                                val = (float)temp/100;
+                                // connectedNodeText+= "{" + val + "}";
                                 break;
                             }
                         }

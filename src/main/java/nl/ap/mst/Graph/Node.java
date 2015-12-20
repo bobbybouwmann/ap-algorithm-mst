@@ -32,8 +32,8 @@ public class Node {
     }
 
     public double DistanceTo(Node aNode) {
-        if (!connectedTo.contains(aNode))
-            return 999999999;
+        //if (!connectedTo.contains(aNode))
+       //     return 999999999;
 
         int diffX = Math.abs(aNode.x - this.x);
         int diffY = Math.abs(aNode.y - this.y);

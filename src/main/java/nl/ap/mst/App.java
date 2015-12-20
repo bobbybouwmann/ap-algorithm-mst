@@ -97,6 +97,13 @@ public class App {
 
         Tree.Print(connected_graph.Nodes, max_nodes, max_nodes);
 
+        for (Node node : connected_graph.Nodes) {
+            System.out.println("NODE: " + node.value);
+            for (Node conn : node.connectedTo) {
+                System.out.println("\t"+conn.value+" dist:" + node.DistanceTo(conn));
+            }
+        }
+
         Tree tree = min_spanning_tree.Get(connected_graph);
 
         System.out.println("Tree length: " + tree.size());

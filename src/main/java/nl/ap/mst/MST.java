@@ -13,7 +13,7 @@ public class MST {
 
     public Tree Get(Graph graph) {
         walkedPath = new ArrayList<>();
-        Node start = FindNodeWithClosestConnection(graph); // calculate our starting point
+        Node start = graph.Nodes.size() > 0 ? graph.Nodes.get(0) : null;
         if (start == null)
             return null; // no vertices with edges found in our graph
 
@@ -60,31 +60,6 @@ public class MST {
         ourTree.Connect(TreeNode.Create(closestNode), TreeNode.Create(startingNode));
     }
 
-    Node FindNodeWithClosestConnection(Graph aGraph) {
-        Node startingNode = null;
-        double closestDistance = 0;
-
-        for(Node aNode : aGraph.Nodes) {
-            if (AlreadyUsed(aNode)) // only walk our non used nodes
-                continue;
-            if (startingNode == null) {
-                startingNode = aNode;
-                Node closestToUs = GetClosestAvailableNode(aNode);
-                if (closestToUs == null)
-                    continue;
-                closestDistance = closestToUs.DistanceTo(aNode);
-            } else { // We are assuming all nodes have at least one connection -> connected graph
-                Node closestToUs = GetClosestAvailableNode(aNode);
-                double distanceToNeighbour = closestToUs.DistanceTo(aNode);
-                if (distanceToNeighbour < closestDistance) {
-                    closestDistance = distanceToNeighbour;
-                    startingNode = aNode;
-                }
-            }
-        }
-        return startingNode;
-    }
-
     Node GetClosestAvailableNode(Node from) {
         Node nearest = null;
         double closestDistance = -1;
@@ -96,7 +71,7 @@ public class MST {
             if (nearest == null) { // no closest found yet - So the first we encounter is our closest node
                 nearest = aNode;
                 closestDistance = aNode.DistanceTo(aNode); // store the distance to our first encountered node for comparing later
-            } else { // TODO we are assuming all nodes have atleast one connection
+            } else { // TODO we are assuming all nodes have at least one connection
                 double distanceToNeighbour = aNode.DistanceTo(aNode);
                 if (distanceToNeighbour < closestDistance) { // Check if this neighbour node is closer as our already found node
                     closestDistance = distanceToNeighbour;
